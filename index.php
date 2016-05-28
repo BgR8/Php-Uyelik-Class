@@ -17,12 +17,12 @@ include 'connect.php';
 // Sınıfımızı Dahil Ediyoruz
 require ('class.uye.php');
 // Yeni Sınıf Oluşturuyoruz
-$uyelik = new uye('kadi','email','sifre','ad','soyad');
+$uyelik = new uye('uye','kadi','email','sifre','ad','soyad');
 
 //$uyelik->kayit($db,'SELECT * FROM uye','batukan','123456','batuhansaygili@hotmail.com.tr','batuhan','saygılı');
 
-echo $uyelik->uyeekle($db,'uye','ba','batuhan','batuhansaygi1@asdasd.com','batuhan','saygılı');
-echo $uyelik->uyeSifreGuncelle($db,'uye','1','batu','batuhan','saygılı','414623');
+echo $uyelik->uyeekle($db,'ba','batuhan','batuhansaygi1@asdasd.com','batuhan','saygılı');
+echo $uyelik->uyeSifreGuncelle($db,'1','batu','batuhan','saygılı','414623');
 //$uyelik->kayit('batukan1','1234561','batuhansaygili@hotmail.com.tr','batuhan2','saygılı2');
 //$db --> SQL bağlantımızı sınıfa yolluyoruz ilk parametrede
 //İkinci parametrede sql select komutumuzu yazıp üyeleri listeliyoruz

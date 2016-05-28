@@ -8,14 +8,24 @@
 
 class uye {
 
+    protected $tabload;
     protected $tkadi;
     protected $temail;
     protected $tsifre;
     protected $tad;
     protected $tsoyad;
 
-    function __construct($tkadi,$temail,$tsifre, $tad,$tsoyad)
+    /**
+     * uye constructor.
+     * @param $tkadi
+     * @param $temail
+     * @param $tsifre
+     * @param $tad
+     * @param $tsoyad
+     */
+    function __construct($tabload,$tkadi, $temail, $tsifre, $tad, $tsoyad)
     {
+        $this->tabload = $tabload;
         $this->tkadi = $tkadi;
         $this->temail = $temail;
         $this->tsifre = $tsifre;
@@ -48,11 +58,11 @@ class uye {
      * @param $soyad
      * @return string
      */
-    public function uyeekle($db, $tabloadi, $kullanici_adi, $sifre, $email, $ad, $soyad){
+    public function uyeekle($db, $kullanici_adi, $sifre, $email, $ad, $soyad){
         if(!empty($kullanici_adi) or !empty($sifre) or !empty($email) or !empty($ad) or !empty($soyad)){
 
-           $dongu = $db->query("select * from $tabloadi where kadi='{$kullanici_adi}'");
-           $dongu2 = $db->query("select * from $tabloadi where kadi='{$email}'");
+           $dongu = $db->query("select * from $this->tabload where kadi='{$kullanici_adi}'");
+           $dongu2 = $db->query("select * from $this->tabload where kadi='{$email}'");
             if ($dongu->rowCount() > 0){
                 return 'Bu isim ile kayıtlı kullanıcı bullunmaktadır. <br>';
             }else if($dongu2->rowCount() >0){
@@ -88,7 +98,7 @@ class uye {
     }
 
 
-    function uyeSifreGuncelle($db,$tabloadi,$id,$kullanici_adi,$ad,$soyad,$sifre=0){
+    function uyeSifreGuncelle($db,$tabloadi,$id,$kullanici_adi,$ad,$soyad,$sifre){
         if(!empty($sifre) or !empty($ad) or !empty($soyad)){
             if($sifre != 0){
 
@@ -121,8 +131,11 @@ class uye {
     }
 
 
-
-    function listele($db,$query){
+    /**
+     * @param $db
+     * @param $query
+     */
+    function listele($db, $query){
         //print_r($this->veriler);
         //foreach($this->veriler as $no => $uye) {
         ////    echo $uye['kullanici_adi'].'<br>';
