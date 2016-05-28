@@ -13,6 +13,8 @@ require ('class.uye.php');
 $uyelik = new uye();
 
 $uyelik->kayit($db,'SELECT * FROM uye','batukan','123456','batuhansaygili@hotmail.com.tr','batuhan','saygılı');
+
+echo $uyelik->uyeekle($db,'SELECT * FROM uye','uye','batuhan','123456','batuhansaygili@hotmail.com.tr','batuhan','saygılı');
 //$uyelik->kayit('batukan1','1234561','batuhansaygili@hotmail.com.tr','batuhan2','saygılı2');
 //$db --> SQL bağlantımızı sınıfa yolluyoruz ilk parametrede
 //İkinci parametrede sql select komutumuzu yazıp üyeleri listeliyoruz
