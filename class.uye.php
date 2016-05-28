@@ -73,7 +73,7 @@ class uye {
         }
     }
 
-    public function uyeGuncelle($db,$query,$tabloadi){
+    public function uyeGuncelle($db,$query,$tabloadi,$sifre,$email){
 
 
     }
