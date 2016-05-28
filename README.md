@@ -15,8 +15,9 @@ require ('class.uye.php');
 
 - Alınan __construct değerler sütun adlarıdır. Bir defaya mahsus bu değerleri sırasıyla gönderdiğimiz de tekrardan yazmamıza gerekyoktur.
 
-$uyelik = new uye('kadi','email','sifre','ad','soyad');
-$uyelik->listele($db,'SELECT * FROM uye');
+
+
+$uyelik = new uye('tablo_adi','kadi','email','sifre','ad','soyad');
 ```
 # Üye Ekleme Kullanımı
 uyeekle parametreleri
@@ -32,23 +33,22 @@ uyeekle parametreleri
 Parametreleri sırası ile göndermeniz gerekmektedir.
 
 ```sh
-echo $uyelik->uyeekle($db,'uye','batu','1','batuhansaygi1@asdasd.com','batuhan','saygılı');
+echo $uyelik->uyeekle($db,'batu','1','batuhansaygi1@asdasd.com','batuhan','saygılı');
 ```
 
 # Üye Şifre Güncelleme Kullanımı
 
 - // 1. parametre sql bağlantımız
-- // 2. parametre tablo adımız
-- // 3. parametre üye idsi
-- // 4. parametre kullanıcı adı
-- // 5. parametre ad
-- // 6. parametre soyad
-- // 7. parametre şifre
+- // 2. parametre üye idsi
+- // 3. parametre kullanıcı adı
+- // 4. parametre ad
+- // 5. parametre soyad
+- // 6. parametre şifre
 
 Parametrelerin yazılması zorunludur. Belirli sorguları yapabilmemiz için bu değerlere ihtiyaç olunmaktadır.
 
 ```sh
 
-$uyelik->uyeSifreGuncelle($db,'uye','1','batu','batuhan','saygılı','414623');
+$uyelik->uyeSifreGuncelle($db,'1','batu','batuhan','saygılı','414623');
 
 ```
