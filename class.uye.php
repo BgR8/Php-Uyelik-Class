@@ -44,7 +44,7 @@ class uye {
                 return 'Bu isim ile kayıtlı kullanıcı bullunmaktadır. <br>';
             }else if($dongu2->rowCount() >0){
                 return 'Bu email ile kayıtlı kullanıcı bullunmaktadır. <br>';
-            }else if(!valid_email($email)){
+            }else if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
                 return 'Geçerli bir eposta giriniz';
             }
             else{
@@ -52,6 +52,14 @@ class uye {
                     return 'Şifreniz 6 ve 6 karakterden büyük olmak zorundadır ';
                 }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678'){
                     return 'Şifreniz basit bir şifre olamaz.';
+                }else {
+                    $sorgu = $db->prepare($query);
+                    $insert  =  $sorgu->execute(array(
+                        $kullanici_adi,$sifre,$email,$ad,$soyad
+                    ));
+                    if($insert){
+                        return 'Başarılı bir şekilde kayıt oldunuz.';
+                    }
                 }
             }
         }else {
@@ -73,8 +81,5 @@ class uye {
         }
     }
 
-    protected  function valid_email( $str )
-    {
-        return ( ! preg_match ( "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str ) ) ? FALSE : TRUE;
-    }
+
 }
