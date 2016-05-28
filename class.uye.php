@@ -61,8 +61,8 @@ class uye {
     public function uyeekle($db, $kullanici_adi, $sifre, $email, $ad, $soyad){
         if(!empty($kullanici_adi) or !empty($sifre) or !empty($email) or !empty($ad) or !empty($soyad)){
 
-           $dongu = $db->query("select * from $this->tabload where kadi='{$kullanici_adi}'");
-           $dongu2 = $db->query("select * from $this->tabload where kadi='{$email}'");
+           $dongu = $db->query("select * from $this->tabload where $this->tkadi='{$kullanici_adi}'");
+           $dongu2 = $db->query("select * from $this->tabload where $this->temail='{$email}'");
             if ($dongu->rowCount() > 0){
                 return 'Bu isim ile kayıtlı kullanıcı bullunmaktadır. <br>';
             }else if($dongu2->rowCount() >0){
