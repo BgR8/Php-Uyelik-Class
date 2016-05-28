@@ -45,6 +45,7 @@ echo $uyelik->uyeekle($db,$query,'uye','batu','1','batuhansaygi1@asdasd.com','ba
 - // 4. parametre kullanıcı adı
 - // 5. parametre ad
 - // 6. parametre soyad
+- // 7. parametre şifre
 
 Parametrelerin yazılması zorunludur. Belirli sorguları yapabilmemiz için bu değerlere ihtiyaç olunmaktadır.
 
