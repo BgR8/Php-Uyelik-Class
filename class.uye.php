@@ -50,7 +50,7 @@ class uye {
             else{
                 if(strlen($sifre) >= 6){
                     return 'Şifreniz 6 ve 6 karakterden büyük olmak zorundadır ';
-                }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678'){
+                }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678' or $sifre == 'q1w2e3r4'){
                     return 'Şifreniz basit bir şifre olamaz.';
                 }else {
                     $sorgu = $db->prepare($query);
@@ -59,6 +59,8 @@ class uye {
                     ));
                     if($insert){
                         return 'Başarılı bir şekilde kayıt oldunuz.';
+                    }else {
+                        return 'Başarısız oldu. Muhtemel hata veritabanı hatası olabilir.';
                     }
                 }
             }
