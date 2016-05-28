@@ -32,9 +32,7 @@ uyeekle parametreleri
 Parametreleri sırası ile göndermeniz gerekmektedir.
 
 ```sh
-//Aşağıda ki sorguyu kendimize göre düzenliyoruz.
-$query = "INSERT INTO uye SET kadi = ?,email = ?, sifre = ? , ad = ? , soyad= ?";
-echo $uyelik->uyeekle($db,$query,'uye','batu','1','batuhansaygi1@asdasd.com','batuhan','saygılı');
+echo $uyelik->uyeekle($db,'uye','batu','1','batuhansaygi1@asdasd.com','batuhan','saygılı');
 ```
 
 # Üye Şifre Güncelleme Kullanımı

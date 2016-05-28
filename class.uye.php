@@ -48,7 +48,7 @@ class uye {
      * @param $soyad
      * @return string
      */
-    public function uyeekle($db, $query, $tabloadi, $kullanici_adi, $sifre, $email, $ad, $soyad){
+    public function uyeekle($db, $tabloadi, $kullanici_adi, $sifre, $email, $ad, $soyad){
         if(!empty($kullanici_adi) or !empty($sifre) or !empty($email) or !empty($ad) or !empty($soyad)){
 
            $dongu = $db->query("select * from $tabloadi where kadi='{$kullanici_adi}'");
@@ -68,6 +68,7 @@ class uye {
                 }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre) or strstr($soyad,$sifre) ){
                     return 'Şifreniz kullanıcı adınız soyadınız ve şifreniz ile ilgili olamaz';
                 }else{
+                    $query = "INSERT INTO uye SET $this->tkadi = ?,$this->temail = ?, $this->tsifre = ? , $this->tad = ? , $this->tsoyad= ?";
                     $sorgu = $db->prepare($query);
                     $insert  =  $sorgu->execute(array(
                         $kullanici_adi,$sifre,$email,$ad,$soyad
