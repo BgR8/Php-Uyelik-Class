@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 <?php
 /**
  * Created by PhpStorm.
@@ -20,3 +27,7 @@ echo $uyelik->uyeSifreGuncelle($db,'uye','1','batu','batuhan','saygılı','41462
 //$db --> SQL bağlantımızı sınıfa yolluyoruz ilk parametrede
 //İkinci parametrede sql select komutumuzu yazıp üyeleri listeliyoruz
 //$uyelik->listele($db,'SELECT * FROM uye');
+
+?>
+</body>
+</html>
