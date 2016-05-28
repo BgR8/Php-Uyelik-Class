@@ -14,7 +14,7 @@ $uyelik = new uye();
 
 //$uyelik->kayit($db,'SELECT * FROM uye','batukan','123456','batuhansaygili@hotmail.com.tr','batuhan','saygılı');
 $query = "INSERT INTO uye SET kadi = ?,email = ?, sifre = ? , ad = ? , soyad= ?";
-echo $uyelik->uyeekle($db,$query,'uye','batu','1','batuhansaygi1@asdasd.com','batuhan','saygılı');
+echo $uyelik->uyeekle($db,$query,'uye','ba','batuhan','batuhansaygi1@asdasd.com','batuhan','saygılı');
 //$uyelik->kayit('batukan1','1234561','batuhansaygili@hotmail.com.tr','batuhan2','saygılı2');
 //$db --> SQL bağlantımızı sınıfa yolluyoruz ilk parametrede
 //İkinci parametrede sql select komutumuzu yazıp üyeleri listeliyoruz
