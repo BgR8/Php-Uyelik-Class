@@ -70,6 +70,12 @@ class uye {
 
         }
     }
+
+    public function uyeGuncelle($db,$query,$tabloadi){
+
+
+    }
+
     function listele($db,$query){
         //print_r($this->veriler);
         //foreach($this->veriler as $no => $uye) {

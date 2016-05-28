@@ -18,6 +18,7 @@ uyeekle parametreleri
 - // 1. parametre sql bağlantımız
 - // 2. parametre sorgumuz
 - // 3. parametre tablo adımız
+- // Bundan sonra ki parametri sırasını kendinize göre düzenleyebilirsiniz.
 - // 4. parametre kullanıcı adı
 - // 5. parametre şifre
 - // 6. parametre email
