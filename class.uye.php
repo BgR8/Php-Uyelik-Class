@@ -47,8 +47,8 @@ class uye {
             }else{
                 if(strlen($sifre) >= 6){
                     return 'Şifreniz 6 ve 6 karakterden büyük olmak zorundadır ';
-                }else if($sifre == '123456'){
-                    return 'Şifreniz 123456 gibi basit bir şifre olamaz.';
+                }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678'){
+                    return 'Şifreniz basit bir şifre olamaz.';
                 }
             }
         }else {
