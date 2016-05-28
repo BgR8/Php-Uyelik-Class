@@ -14,9 +14,7 @@ $uyelik = new uye();
 $uyelik->listele($db,'SELECT * FROM uye');
 ```
 # Üye Ekleme Kullanımı
-```sh
-//Aşağıda ki sorguyu kendimize göre düzenliyoruz.
-$query = "INSERT INTO uye SET kadi = ?,email = ?, sifre = ? , ad = ? , soyad= ?";
+uyeekle parametreleri
 // 1. parametre sql bağlantımız
 // 2. parametre sorgumuz
 // 3. parametre tablo adımız
@@ -25,5 +23,8 @@ $query = "INSERT INTO uye SET kadi = ?,email = ?, sifre = ? , ad = ? , soyad= ?"
 // 6. parametre email
 // 7. parametre ad
 // 8. parametre soyad
+```sh
+//Aşağıda ki sorguyu kendimize göre düzenliyoruz.
+$query = "INSERT INTO uye SET kadi = ?,email = ?, sifre = ? , ad = ? , soyad= ?";
 echo $uyelik->uyeekle($db,$query,'uye','batu','1','batuhansaygi1@asdasd.com','batuhan','saygılı');
 ```
