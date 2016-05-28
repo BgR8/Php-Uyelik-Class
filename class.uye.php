@@ -98,7 +98,7 @@ class uye {
     }
 
 
-    function uyeSifreGuncelle($db,$tabloadi,$id,$kullanici_adi,$ad,$soyad,$sifre){
+    function uyeSifreGuncelle($db,$id,$kullanici_adi,$ad,$soyad,$sifre){
         if(!empty($sifre) or !empty($ad) or !empty($soyad)){
             if($sifre != 0){
 
@@ -109,7 +109,7 @@ class uye {
                 }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre)  or strstr($soyad,$sifre) ){
                     return 'Şifreniz kullanıcı adınız soyadınız ve şifreniz ile ilgili olamaz';
                 }else {
-                    $query = $db->prepare("UPDATE $tabloadi SET
+                    $query = $db->prepare("UPDATE $this->tabload SET
                     $this->tsifre = :sifre
                     WHERE id = :id");
                     $update = $query->execute(array(
