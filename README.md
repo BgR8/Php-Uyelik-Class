@@ -46,7 +46,7 @@ echo $uyelik->uyeekle($db,$query,'uye','batu','1','batuhansaygi1@asdasd.com','ba
 - // 5. parametre ad
 - // 6. parametre soyad
 
-ilk 5 parametre yazılması zorunludur. Belirli sorguları yapabilmemiz için bu değerlere ihtiyaç olunmaktadır.
+Parametrelerin yazılması zorunludur. Belirli sorguları yapabilmemiz için bu değerlere ihtiyaç olunmaktadır.
 
 ```sh
 
