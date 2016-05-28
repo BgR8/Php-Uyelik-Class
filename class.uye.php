@@ -107,7 +107,7 @@ class uye {
                 }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678' or $sifre == 'q1w2e3r4'){
                     return 'Şifreniz basit bir şifre olamaz.';
                 }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre)  or strstr($soyad,$sifre) ){
-                    return 'Şifreniz kullanıcı adınız soyadınız ve şifreniz ile ilgili olamaz';
+                    return 'Şifreniz kullanıcı adınız , adınız ve soyadınız içermemelidir';
                 }else {
                     $query = $db->prepare("UPDATE $this->tabload SET
                     $this->tsifre = :sifre
