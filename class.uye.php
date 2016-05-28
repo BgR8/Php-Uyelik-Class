@@ -8,8 +8,21 @@
 
 class uye {
 
-    public $veriler;
-    public $dongu;
+    protected $tkadi;
+    protected $temail;
+    protected $tsifre;
+    protected $tad;
+    protected $tsoyad;
+
+    function __construct($tkadi,$temail,$tsifre, $tad,$tsoyad)
+    {
+        $this->tkadi = $tkadi;
+        $this->temail = $temail;
+        $this->tsifre = $tsifre;
+        $this->tad = $tad;
+        $this->tsoyad = $tsoyad;
+    }
+
     function kayit($db,$query,$kullanici_adi,$sifre,$email,$ad,$soyad){
 
         //$this->kullanici_adi = $kullanici_adi;
@@ -19,7 +32,7 @@ class uye {
         //$this->soyad = $soyad;
 
 
-        $this ->veriler[] = array('kullanici_adi' => $kullanici_adi,'sifre' => $sifre,'email' => $email , 'ad' => $ad , 'soyad' => $soyad );
+        //$this ->veriler[] = array('kullanici_adi' => $kullanici_adi,'sifre' => $sifre,'email' => $email , 'ad' => $ad , 'soyad' => $soyad );
 
 
     }
@@ -52,8 +65,8 @@ class uye {
                     return 'Şifreniz 6 ve 6 karakterden büyük olmak zorundadır ';
                 }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678' or $sifre == 'q1w2e3r4'){
                     return 'Şifreniz basit bir şifre olamaz.';
-                }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre) ){
-                    return 'Şifreniz kullanıcı adınız ve şifreniz ile ilgili olamaz';
+                }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre) or strstr($soyad,$sifre) ){
+                    return 'Şifreniz kullanıcı adınız soyadınız ve şifreniz ile ilgili olamaz';
                 }else{
                     $sorgu = $db->prepare($query);
                     $insert  =  $sorgu->execute(array(
@@ -73,10 +86,40 @@ class uye {
         }
     }
 
-    public function uyeGuncelle($db,$query,$tabloadi,$sifre,$email){
 
+    function uyeSifreGuncelle($db,$tabloadi,$id,$kullanici_adi,$ad,$soyad,$sifre=0){
+        if(!empty($sifre) or !empty($ad) or !empty($soyad)){
+            if($sifre != 0){
+
+                if(strlen($sifre) < 5){
+                    return 'Şifreniz 6 ve 6 karakterden büyük olmak zorundadır ';
+                }else if($sifre == '123456' or $sifre == 'qwert' or $sifre == '111111' or $sifre == '123456789' or $sifre == '12345678' or $sifre == 'q1w2e3r4'){
+                    return 'Şifreniz basit bir şifre olamaz.';
+                }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre)  or strstr($soyad,$sifre) ){
+                    return 'Şifreniz kullanıcı adınız soyadınız ve şifreniz ile ilgili olamaz';
+                }else {
+                    $query = $db->prepare("UPDATE $tabloadi SET
+                    $this->tsifre = :sifre
+                    WHERE id = :id");
+                    $update = $query->execute(array(
+                        "sifre" => $sifre,
+                        "id" => $id
+                    ));
+
+                    if($update){
+                        return 'Başarılı şekil de güncelleme yaptınız.';
+                    }else {
+                        return 'Güncellerken bir sorun oluştu';
+                    }
+                }
+            }
+        }else{
+            return 'Boş Alan Bırakmayınız.';
+        }
 
     }
+
+
 
     function listele($db,$query){
         //print_r($this->veriler);
