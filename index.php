@@ -20,13 +20,14 @@ require ('class.uye.php');
 $uyelik = new uye('uye','kadi','email','sifre','ad','soyad');
 
 //$uyelik->kayit($db,'SELECT * FROM uye','batukan','123456','batuhansaygili@hotmail.com.tr','batuhan','saygılı');
-
+echo '<h4> Kayıt Ekleme </h4>';
 echo $uyelik->uyeekle($db,'ba','batuhan','batuhansaygi1@asdasd.com','batuhan','saygılı');
+echo '<br>';
+echo '<h4> Üye Şifre Güncellemesi </h4>';
 echo $uyelik->uyeSifreGuncelle($db,'1','batu','batuhan','saygılı','414623');
-//$uyelik->kayit('batukan1','1234561','batuhansaygili@hotmail.com.tr','batuhan2','saygılı2');
-//$db --> SQL bağlantımızı sınıfa yolluyoruz ilk parametrede
-//İkinci parametrede sql select komutumuzu yazıp üyeleri listeliyoruz
-//$uyelik->listele($db,'SELECT * FROM uye');
+echo '<br>';
+echo '<h4> Listeleme </h4>';
+$uyelik->listele($db);
 
 ?>
 </body>

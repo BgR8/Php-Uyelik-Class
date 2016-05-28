@@ -135,12 +135,12 @@ class uye {
      * @param $db
      * @param $query
      */
-    function listele($db, $query){
+    function listele($db){
         //print_r($this->veriler);
         //foreach($this->veriler as $no => $uye) {
         ////    echo $uye['kullanici_adi'].'<br>';
        // }
-        $dongu = $db->query($query);
+        $dongu = $db->query("Select * from $this->tabload");
         if ( $dongu->rowCount() ){
             while( $data = $dongu->fetch( PDO::FETCH_ASSOC ) ){
                 echo $data['kadi']."<br />";
