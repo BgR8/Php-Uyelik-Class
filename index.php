@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +23,9 @@ require ('class.uye.php');
 $uyelik = new uye('uye','kadi','email','sifre','ad','soyad');
 
 //$uyelik->kayit($db,'SELECT * FROM uye','batukan','123456','batuhansaygili@hotmail.com.tr','batuhan','saygılı');
+echo '<h4> Login </h4>';
+echo $uyelik->login($db,'ba','batuhan');
+
 echo '<h4> Kayıt Ekleme </h4>';
 echo $uyelik->uyeekle($db,'ba','batuhan','batuhansaygi1@asdasd.com','batuhan','saygılı');
 echo '<br>';

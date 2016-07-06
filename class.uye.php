@@ -130,6 +130,34 @@ class uye {
 
     }
 
+    function login($db,$kullanici_adi,$sifre,$ip=null){
+        if(!empty($kullanici_adi) or !empty($sifre)){
+            $query = $db->prepare("Select * from $this->tabload where
+                   $this->tkadi = :kullanici_adi and
+                   $this->tsifre = :sifre
+                    ");
+            $update = $query->execute(array(
+                "kullanici_adi" => $kullanici_adi,
+                "sifre" => $sifre
+            ));
+
+            if($update->rowCount() > 0){
+
+                $_SESSION['kadi'] = $kullanici_adi;
+                $_SESSION['login'] = 1;
+                $_SESSION['ip'] = $ip;
+
+
+            }else{
+                return 'Kullanıcı adınızı veya şifreinizi yanlış girdiniz.';
+            }
+        }else{
+            return 'Boş Alan Bırakmayınız.';
+
+        }
+
+    }
+
 
     /**
      * @param $db
