@@ -58,7 +58,7 @@ class uye {
      * @param $soyad
      * @return string
      */
-    public function uyeekle($db, $kullanici_adi, $sifre, $email, $ad, $soyad){
+    public function uyeekle($db, $kullanici_adi, $email, $sifre, $ad, $soyad){
         if(!empty($kullanici_adi) or !empty($sifre) or !empty($email) or !empty($ad) or !empty($soyad)){
 
            $dongu = $db->query("select * from $this->tabload where $this->tkadi='{$kullanici_adi}'");
@@ -81,7 +81,7 @@ class uye {
                     $query = "INSERT INTO uye SET $this->tkadi = ?,$this->temail = ?, $this->tsifre = ? , $this->tad = ? , $this->tsoyad= ?";
                     $sorgu = $db->prepare($query);
                     $insert  =  $sorgu->execute(array(
-                        $kullanici_adi,$sifre,$email,$ad,$soyad
+                        $kullanici_adi,$email,$sifre,$ad,$soyad
                     ));
                     if($insert){
                         return 'Başarılı bir şekilde kayıt oldunuz.';
@@ -132,16 +132,8 @@ class uye {
 
     function login($db,$kullanici_adi,$sifre,$ip=null){
         if(!empty($kullanici_adi) or !empty($sifre)){
-            $query = $db->prepare("Select * from $this->tabload where
-                   $this->tkadi = :kullanici_adi and
-                   $this->tsifre = :sifre
-                    ");
-            $update = $query->execute(array(
-                "kullanici_adi" => $kullanici_adi,
-                "sifre" => $sifre
-            ));
-
-            if($update->rowCount() > 0){
+            $query = $db->query("select * from $this->tabload where $this->tkadi='{$kullanici_adi}' and $this->tsifre='{$sifre}'");
+            if($query->rowCount() > 0){
 
                 $_SESSION['kadi'] = $kullanici_adi;
                 $_SESSION['login'] = 1;
