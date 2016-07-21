@@ -58,15 +58,15 @@ class uye {
      * @param $soyad
      * @return string
      */
-    public function uyeekle($db, $kullanici_adi, $email, $sifre, $ad, $soyad){
+     function uyeekle($db, $kullanici_adi, $email, $sifre, $ad, $soyad){
         if(!empty($kullanici_adi) or !empty($sifre) or !empty($email) or !empty($ad) or !empty($soyad)){
 
            $dongu = $db->query("select * from $this->tabload where $this->tkadi='{$kullanici_adi}'");
            $dongu2 = $db->query("select * from $this->tabload where $this->temail='{$email}'");
             if ($dongu->rowCount() > 0){
-                return 'Bu isim ile kayıtlı kullanıcı bullunmaktadır. <br>';
+                return 'Bu isim ile kayıtlı kullanıcı bullunmaktadır.';
             }else if($dongu2->rowCount() >0){
-                return 'Bu email ile kayıtlı kullanıcı bullunmaktadır. <br>';
+                return 'Bu email ile kayıtlı kullanıcı bullunmaktadır.';
             }else if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
                 return 'Geçerli bir eposta giriniz';
             }
@@ -78,13 +78,17 @@ class uye {
                 }else if(strstr($kullanici_adi,$sifre) or strstr($ad,$sifre) or strstr($soyad,$sifre) ){
                     return 'Şifreniz kullanıcı adınız soyadınız ve şifreniz ile ilgili olamaz';
                 }else{
-                    $query = "INSERT INTO uye SET $this->tkadi = ?,$this->temail = ?, $this->tsifre = ? , $this->tad = ? , $this->tsoyad= ?";
+                    $query = "INSERT INTO $this->tabload SET $this->tkadi = :kadi , $this->temail = :email , $this->tsifre = :sifre , $this->tad = :ad , $this->tsoyad = :soyad";
                     $sorgu = $db->prepare($query);
                     $insert  =  $sorgu->execute(array(
-                        $kullanici_adi,$email,$sifre,$ad,$soyad
+                        "kadi" => $kullanici_adi,
+                        "email" => $email,
+                        "sifre" => $sifre,
+                        "ad" => $ad,
+                        "soyad" => $soyad
                     ));
                     if($insert){
-                        return 'Başarılı bir şekilde kayıt oldunuz.';
+                        return 1;
                     }else {
                         return 'Başarısız oldu. Muhtemel hata veritabanı hatası olabilir.';
                     }
@@ -163,7 +167,7 @@ class uye {
         $dongu = $db->query("Select * from $this->tabload");
         if ( $dongu->rowCount() ){
             while( $data = $dongu->fetch( PDO::FETCH_ASSOC ) ){
-                echo $data['kadi']."<br />";
+                echo $data['kadi'];
             }
         }
     }

@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +25,9 @@ $uyelik = new uye('uye','kadi','email','sifre','ad','soyad');
 echo '<h4> Login </h4>';
 echo $uyelik->login($db,'Batuhan','414623');
 echo $_SESSION['kadi'];
-if($_SESSION['login'] != 1){
+if($_SESSION['login'] == 1){
 echo '<h4> Kayıt Ekleme </h4>';
-echo $uyelik->uyeekle($db,'batuhan1211','batuhan1294@gmail.com','batubatu','batuhan','saygılı');
+echo $uyelik->uyeekle($db,'batuhan12111sds5151','batuhan1211312sd394@gmail.com','batu12313batu','basadtuh123an','sayg123ılı');
 echo '<br>';
 echo '<h4> Üye Şifre Güncellemesi </h4>';
 echo $uyelik->uyeSifreGuncelle($db,'1','batu','batuhan','saygılı','414623');
