@@ -2,6 +2,11 @@
 
 Genel üyelik kullanımların için hazırladığım php sınıf
 
+# Demo
+
+http://saygilisoftware.net/oop/demo/
+
+
 # Kullanımı
 
 
